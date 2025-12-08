@@ -11,7 +11,7 @@
     "packages/wasm-bindings"
   ],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
+    "build": "npm run build --workspace=@lnmp/wasm-bindings && npm run build --workspace=@lnmp/lnmp",
     "test": "jest",
     "lint": "eslint packages/*/src/**/*.ts",
     "format": "prettier --write \"packages/*/src/**/*.ts\"",

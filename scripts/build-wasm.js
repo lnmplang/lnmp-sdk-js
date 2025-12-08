@@ -22,16 +22,41 @@ async function main() {
         }
 
         // 2. Clone or Update Core Repo
+        // 2. Clone or Update Core Repo
+        let shouldClone = true;
+
         if (fs.existsSync(CORE_REPO_DIR)) {
-            console.log('Core repo found. Updating...');
-            try {
-                run('git fetch origin && git reset --hard origin/main', CORE_REPO_DIR);
-            } catch (e) {
-                console.log('Failed to reset to main, trying master...');
-                run('git fetch origin && git reset --hard origin/master', CORE_REPO_DIR);
+            const gitDir = path.join(CORE_REPO_DIR, '.git');
+            if (fs.existsSync(gitDir)) {
+                // Verify remote URL matches
+                try {
+                    // We need to use execSync directly to capture output silently or just run verify
+                    const remoteUrl = execSync('git remote get-url origin', { cwd: CORE_REPO_DIR }).toString().trim();
+                    if (remoteUrl === CORE_REPO_URL) {
+                        shouldClone = false;
+                        console.log('Core repo found and valid. Updating...');
+                        try {
+                            run('git fetch origin && git reset --hard origin/main', CORE_REPO_DIR);
+                        } catch (e) {
+                            console.log('Failed to reset to main, trying master...');
+                            run('git fetch origin && git reset --hard origin/master', CORE_REPO_DIR);
+                        }
+                    } else {
+                        console.log(`Core repo remote mismatch (found ${remoteUrl}, expected ${CORE_REPO_URL}). Re-cloning...`);
+                    }
+                } catch (e) {
+                    console.log('Failed to check remote URL. Re-cloning...');
+                }
+            } else {
+                console.log('Core repo directory exists but is not a git repo. Re-cloning...');
             }
-        } else {
+        }
+
+        if (shouldClone) {
             console.log('Cloning core repo...');
+            if (fs.existsSync(CORE_REPO_DIR)) {
+                fs.rmSync(CORE_REPO_DIR, { recursive: true, force: true });
+            }
             run(`git clone ${CORE_REPO_URL} core-repo`, CACHE_DIR);
         }
 

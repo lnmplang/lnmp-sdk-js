@@ -17,8 +17,7 @@ module.exports = {
         },
     },
     moduleNameMapper: {
-        '^@lnmplang/core$': '<rootDir>/packages/core/src',
-        '^@lnmplang/codec$': '<rootDir>/packages/codec/src',
-        '^@lnmplang/lnmp$': '<rootDir>/packages/lnmp/src',
+        '^@lnmp/lnmp$': '<rootDir>/packages/lnmp/src',
+        '^@lnmp/wasm-bindings$': '<rootDir>/packages/wasm-bindings/src',
     },
 };

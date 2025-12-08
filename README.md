@@ -6,15 +6,15 @@ This directory contains the official TypeScript implementation of the **LNMP (LL
 
 This project is structured as a monorepo containing the following packages:
 
-- **[`@lnmplang/lnmp`](packages/lnmp)**: The **MAIN** package for users. It provides a unified API for all LNMP modules (Core, Envelope, Net, Embedding, Spatial, LLB, SFE).
-- **[`@lnmplang/wasm-bindings`](packages/wasm-bindings)**: Internal package providing high-performance WASM bindings to the Rust `lnmp` meta-crate.
+- **[`@lnmp/lnmp`](packages/lnmp)**: The **MAIN** package for users. It provides a unified API for all LNMP modules (Core, Envelope, Net, Embedding, Spatial, LLB, SFE).
+- **[`@lnmp/wasm-bindings`](packages/wasm-bindings)**: Internal package providing high-performance WASM bindings to the Rust `lnmp` meta-crate.
 
 ## Installation
 
 Users should install the main package:
 
 ```bash
-npm install @lnmplang/lnmp
+npm install @lnmp/lnmp
 ```
 
 ## Features

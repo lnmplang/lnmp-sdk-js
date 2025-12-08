@@ -1,11 +1,11 @@
 # LNMP TypeScript SDK
 
-TypeScript implementation of the LNMP (LLM Native Minimal Protocol) for Node.js.
+This package provides a unified interface for working with the **LNMP (LLM Native Minimal Protocol)** in JavaScript and TypeScript.
 
 ## Installation
 
 ```bash
-npm install @lnmplang/lnmp
+npm install @lnmp/lnmp
 ```
 
 ## Usage

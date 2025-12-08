@@ -1,5 +1,5 @@
 // Re-export types from WASM bindings
-export type { LnmpRecord, LnmpField, LnmpValue, FieldId } from '@lnmplang/wasm-bindings';
+export type { LnmpRecord, LnmpField, LnmpValue, FieldId } from '@lnmp/wasm-bindings';
 
 // Additional TypeScript-specific utility types
 export type ValueType =

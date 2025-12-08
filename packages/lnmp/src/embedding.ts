@@ -1,7 +1,11 @@
-import * as wasm from '@lnmplang/wasm-bindings';
-import { VectorDelta, QuantScheme, QuantizedVector } from '@lnmplang/wasm-bindings';
+import * as wasm from '@lnmp/wasm-bindings';
+import type {
+    VectorDelta,
+    QuantScheme,
+    QuantizedVector
+} from '@lnmp/wasm-bindings';
 
-export { QuantScheme };
+export type { QuantScheme };
 
 export class Embedding {
     /**

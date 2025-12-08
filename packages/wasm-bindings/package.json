@@ -1,5 +1,5 @@
 {
-    "name": "@lnmplang/wasm-bindings",
+    "name": "@lnmp/wasm-bindings",
     "version": "0.1.0",
     "description": "WASM bindings for LNMP Rust implementation",
     "main": "./dist/index.js",
@@ -10,7 +10,7 @@
     ],
     "scripts": {
         "build": "tsc",
-        "rebuild-wasm": "cd ../../../crates/lnmp && wasm-pack build --target nodejs --out-dir ../../sdk/js/packages/wasm-bindings/wasm --features wasm"
+        "rebuild-wasm": "node ../../scripts/build-wasm.js"
     },
     "keywords": [
         "lnmp",
@@ -23,8 +23,8 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/lnmplang/lnmp-protocol.git",
-        "directory": "sdk/js/packages/wasm-bindings"
+        "url": "https://github.com/lnmplang/lnmp-sdk-js.git",
+        "directory": "packages/wasm-bindings"
     },
     "publishConfig": {
         "access": "public"

@@ -1,5 +1,5 @@
-import * as wasm from '@lnmplang/wasm-bindings';
-import { LnmpRecord, EnvelopeMetadata, LnmpEnvelope } from '@lnmplang/wasm-bindings';
+import * as wasm from '@lnmp/wasm-bindings';
+import { LnmpRecord, EnvelopeMetadata, LnmpEnvelope } from '@lnmp/wasm-bindings';
 
 export class Envelope {
     /**

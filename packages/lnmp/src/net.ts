@@ -1,5 +1,5 @@
-import * as wasm from '@lnmplang/wasm-bindings';
-import { NetMessage, RoutingDecision } from '@lnmplang/wasm-bindings';
+import * as wasm from '@lnmp/wasm-bindings';
+import { NetMessage, RoutingDecision } from '@lnmp/wasm-bindings';
 
 export class Network {
     /**

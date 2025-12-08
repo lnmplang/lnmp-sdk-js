@@ -11,11 +11,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-      - name: Install
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
         run: npm ci
+
+      - name: Build WASM
+        run: npm run rebuild-wasm -w packages/wasm-bindings
+
+      - name: Build All Packages
+        run: npm run build
+
       - name: Run tests
         run: npm test

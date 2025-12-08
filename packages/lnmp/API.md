@@ -25,7 +25,7 @@ This document provides a detailed reference for the `@lnmplang/lnmp` TypeScript 
 Parses LNMP text format into `LnmpRecord` objects.
 
 ```typescript
-import { Parser } from '@lnmplang/lnmp';
+import { Parser } from '@lnmp/lnmp';
 
 const parser = new Parser('F12:i=14532;F7:b=1');
 const record = parser.parseRecord();
@@ -36,7 +36,7 @@ const record = parser.parseRecord();
 Encodes `LnmpRecord` objects into canonical LNMP text format.
 
 ```typescript
-import { Encoder } from '@lnmplang/lnmp';
+import { Encoder } from '@lnmp/lnmp';
 
 const encoder = new Encoder();
 const text = encoder.encode(record);

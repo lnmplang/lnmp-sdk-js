@@ -1,5 +1,5 @@
-import * as wasm from '@lnmplang/wasm-bindings';
-import { LnmpRecord } from '@lnmplang/wasm-bindings';
+import * as wasm from '@lnmp/wasm-bindings';
+import type { LnmpRecord } from './types';
 
 export class ExplainEncoder {
     /**

@@ -1,5 +1,5 @@
 {
-    "name": "@lnmplang/lnmp",
+    "name": "@lnmp/lnmp",
     "version": "0.1.0",
     "description": "LNMP Protocol - Meta package providing unified access to all LNMP modules",
     "main": "./dist/index.js",
@@ -21,7 +21,7 @@
         "clean": "rm -rf dist"
     },
     "dependencies": {
-        "@lnmplang/wasm-bindings": "^0.1.0"
+        "@lnmp/wasm-bindings": "^0.1.0"
     },
     "keywords": [
         "lnmp",
@@ -34,8 +34,8 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/lnmplang/lnmp-protocol.git",
-        "directory": "sdk/js/packages/lnmp"
+        "url": "https://github.com/lnmplang/lnmp-sdk-js.git",
+        "directory": "packages/lnmp"
     },
     "publishConfig": {
         "access": "public"

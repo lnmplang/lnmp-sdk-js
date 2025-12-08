@@ -16,4 +16,4 @@ export {
     compute_checksum,
     format_checksum,
     parse_checksum
-} from '@lnmplang/wasm-bindings';
+} from '@lnmp/wasm-bindings';

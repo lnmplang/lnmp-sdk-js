@@ -3,8 +3,11 @@ node_modules/
 
 
 # Build outputs
+# Build outputs
 dist/
 *.tsbuildinfo
+.cache/
+packages/wasm-bindings/wasm/
 
 # Test coverage
 coverage/

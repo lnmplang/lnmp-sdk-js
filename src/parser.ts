@@ -1,4 +1,4 @@
-import { parse_lnmp } from '@lnmp/wasm-bindings';
+import { parse_lnmp } from './wasm';
 import type { LnmpRecord } from './types';
 
 export class Parser {

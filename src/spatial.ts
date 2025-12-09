@@ -1,5 +1,5 @@
-import * as wasm from '@lnmp/wasm-bindings';
-import { SpatialFrame } from '@lnmp/wasm-bindings';
+import * as wasm from './wasm';
+import type { SpatialFrame } from './types';
 
 export class Spatial {
     /**

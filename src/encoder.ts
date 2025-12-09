@@ -1,4 +1,4 @@
-import { encode_lnmp } from '@lnmp/wasm-bindings';
+import { encode_lnmp } from './wasm';
 import type { LnmpRecord } from './types';
 
 export interface EncoderConfig {

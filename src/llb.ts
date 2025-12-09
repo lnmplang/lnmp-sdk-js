@@ -1,4 +1,4 @@
-import * as wasm from '@lnmp/wasm-bindings';
+import * as wasm from './wasm';
 import type { LnmpRecord } from './types';
 
 export class ExplainEncoder {

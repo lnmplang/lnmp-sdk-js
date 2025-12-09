@@ -1,9 +1,9 @@
-import * as wasm from '@lnmp/wasm-bindings';
+import * as wasm from './wasm';
 import type {
     VectorDelta,
     QuantScheme,
     QuantizedVector
-} from '@lnmp/wasm-bindings';
+} from './types';
 
 export type { QuantScheme };
 

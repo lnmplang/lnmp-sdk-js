@@ -1,6 +1,6 @@
-import * as wasm from '@lnmp/wasm-bindings';
+import * as wasm from './wasm';
 import { Envelope } from './envelope';
-import { ContextProfile } from '@lnmp/wasm-bindings';
+import type { LnmpRecord, LnmpEnvelope, ContextProfile } from './types';
 
 export { ContextProfile };
 

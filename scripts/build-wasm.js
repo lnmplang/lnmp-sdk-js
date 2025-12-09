@@ -5,7 +5,7 @@ const path = require('path');
 const CORE_REPO_URL = 'https://github.com/lnmplang/lnmp-protocol.git';
 const CACHE_DIR = path.resolve(__dirname, '../.cache');
 const CORE_REPO_DIR = path.join(CACHE_DIR, 'core-repo');
-const TARGET_WASM_DIR = path.resolve(__dirname, '../packages/wasm-bindings/wasm');
+const TARGET_WASM_DIR = path.resolve(__dirname, '../src/wasm');
 
 function run(command, cwd) {
     console.log(`Running: ${command} in ${cwd || process.cwd()}`);

@@ -1,4 +1,4 @@
-import { sanitize_text } from '@lnmp/wasm-bindings';
+import { sanitize_text } from './wasm';
 
 export class Sanitizer {
     /**

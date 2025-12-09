@@ -38,9 +38,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build WASM (Bootstrap)
-        # We build once here to ensure everything is ready, though semantic-release exec step will also trigger build
-        run: npm run rebuild-wasm -w packages/wasm-bindings
+      - name: Build
+        run: npm run build
 
       - name: Release
         env:

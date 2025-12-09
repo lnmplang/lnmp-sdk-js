@@ -22,6 +22,10 @@
         "clean": "rm -rf dist src/wasm"
     },
     "dependencies": {},
+    "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=9.0.0"
+    },
     "devDependencies": {
         "tsup": "^8.0.0",
         "typescript": "^5.0.0",

@@ -8,6 +8,12 @@ This package provides a unified interface for working with the **LNMP (LLM Nativ
 npm install @lnmp/lnmp
 ```
 
+## Requirements
+
+- **Node.js**: >= 18.0.0
+- **TypeScript**: >= 5.0.0 (for TypeScript projects)
+
+
 ## Usage
 
 ### 1. Core & Codec (Parsing/Encoding)

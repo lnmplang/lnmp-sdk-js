@@ -48,6 +48,7 @@
         "url": "git+https://github.com/lnmplang/lnmp-sdk-js.git"
     },
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
     }
 }

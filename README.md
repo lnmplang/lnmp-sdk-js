@@ -11,9 +11,20 @@ This package provides a unified interface for working with the **LNMP (LLM Nativ
 
 ## Installation
 
+**From NPM:**
 ```bash
 npm install @lnmp/lnmp
 ```
+
+**From GitHub Packages:**
+```bash
+# Add to .npmrc:
+@lnmplang:registry=https://npm.pkg.github.com
+
+# Then install:
+npm install @lnmplang/lnmp
+```
+
 
 ## Requirements.
 

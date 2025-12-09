@@ -119,3 +119,11 @@ jobs:
 
       - name: Publish to NPM
         run: npm publish --provenance --access public
+
+      - name: Setup GitHub Packages Authentication
+        run: |
+          echo "@lnmplang:registry=https://npm.pkg.github.com" > ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+
+      - name: Publish to GitHub Packages
+        run: npm publish --registry=https://npm.pkg.github.com

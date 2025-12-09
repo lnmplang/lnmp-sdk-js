@@ -120,16 +120,3 @@ jobs:
       - name: Publish to NPM
         run: npm publish --provenance --access public
 
-      - name: Setup GitHub Packages Authentication
-        run: |
-          # Create a temporary package.json with GitHub org scope
-          jq '.name = "@lnmplang/lnmp"' package.json > package.github.json
-          echo "@lnmplang:registry=https://npm.pkg.github.com" > .npmrc.github
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc.github
-
-      - name: Publish to GitHub Packages
-        run: |
-          cp package.github.json package.json
-          cp .npmrc.github ~/.npmrc
-          npm publish --registry=https://npm.pkg.github.com
-          git checkout package.json  # Restore original

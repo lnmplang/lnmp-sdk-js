@@ -15,7 +15,7 @@ This package provides a unified interface for working with the **LNMP (LLM Nativ
 npm install @lnmp/lnmp
 ```
 
-## Requirements
+## Requirements.
 
 - **Node.js**: >= 18.0.0
 - **TypeScript**: >= 5.0.0 (for TypeScript projects)

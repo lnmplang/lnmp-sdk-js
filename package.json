@@ -1,6 +1,6 @@
 {
     "name": "@lnmp/lnmp",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "description": "LNMP Protocol - Meta package providing unified access to all LNMP modules",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",

@@ -1,5 +1,12 @@
 # LNMP TypeScript SDK
 
+[![npm version](https://badge.fury.io/js/@lnmp%2Flnmp.svg)](https://www.npmjs.com/package/@lnmp/lnmp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/lnmplang/lnmp-sdk-js/actions/workflows/ci.yml/badge.svg)](https://github.com/lnmplang/lnmp-sdk-js/actions/workflows/ci.yml)
+[![npm downloads](https://img.shields.io/npm/dm/@lnmp/lnmp.svg)](https://www.npmjs.com/package/@lnmp/lnmp)
+[![Node.js Version](https://img.shields.io/node/v/@lnmp/lnmp.svg)](https://nodejs.org)
+
+
 This package provides a unified interface for working with the **LNMP (LLM Native Minimal Protocol)** in JavaScript and TypeScript.
 
 ## Installation

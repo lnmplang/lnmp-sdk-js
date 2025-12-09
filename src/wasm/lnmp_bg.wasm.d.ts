@@ -1,0 +1,33 @@
+/* tslint:disable */
+/* eslint-disable */
+export const memory: WebAssembly.Memory;
+export const compute_checksum: (a: number, b: number, c: number, d: any) => [number, number, number];
+export const dequantize_embedding: (a: any) => [number, number, number, number];
+export const embedding_apply_delta: (a: number, b: number, c: any) => [number, number, number, number];
+export const embedding_delta: (a: number, b: number, c: number, d: number) => [number, number, number];
+export const encode_lnmp: (a: any, b: number, c: number) => [number, number, number, number];
+export const envelope_unwrap: (a: any) => [number, number, number];
+export const envelope_wrap: (a: any, b: any) => [number, number, number];
+export const format_checksum: (a: number) => [number, number];
+export const llb_explain: (a: any, b: any) => [number, number, number, number];
+export const lnmp_version: () => [number, number];
+export const network_decide: (a: any, b: number) => [number, number, number, number];
+export const network_importance: (a: any, b: number) => [number, number, number];
+export const parse_checksum: (a: number, b: number) => [number, number, number];
+export const parse_lnmp: (a: number, b: number) => [number, number, number];
+export const quantize_embedding: (a: number, b: number, c: number) => [number, number, number];
+export const sanitize_text: (a: number, b: number) => [number, number];
+export const sfe_score_context: (a: any, b: bigint) => [number, number, number];
+export const spatial_decode_frame: (a: number, b: number) => [number, number, number];
+export const spatial_encode_frame: (a: any) => [number, number, number, number];
+export const transport_from_http: (a: any) => [number, number, number];
+export const transport_to_http: (a: any) => [number, number, number];
+export const init: () => void;
+export const __wbindgen_malloc: (a: number, b: number) => number;
+export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+export const __wbindgen_exn_store: (a: number) => void;
+export const __externref_table_alloc: () => number;
+export const __wbindgen_externrefs: WebAssembly.Table;
+export const __wbindgen_free: (a: number, b: number, c: number) => void;
+export const __externref_table_dealloc: (a: number) => void;
+export const __wbindgen_start: () => void;

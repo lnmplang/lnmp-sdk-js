@@ -1,5 +1,5 @@
 
-import { Parser } from '../index';
+import { Parser } from '../parser';
 
 describe('LNMP Package Smoke Test', () => {
     it('should explicitly export Parser class', () => {

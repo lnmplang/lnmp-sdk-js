@@ -1,12 +1,12 @@
 module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'node',
-    roots: ['<rootDir>/packages'],
+    roots: ['<rootDir>/src'],
     testMatch: ['**/__tests__/**/*.test.ts', '**/?(*.)+(spec|test).ts'],
     collectCoverageFrom: [
-        'packages/*/src/**/*.ts',
-        '!packages/*/src/**/*.d.ts',
-        '!packages/*/src/**/index.ts',
+        'src/**/*.ts',
+        '!src/**/*.d.ts',
+        '!src/**/index.ts',
     ],
     coverageThreshold: {
         global: {
@@ -17,7 +17,6 @@ module.exports = {
         },
     },
     moduleNameMapper: {
-        '^@lnmp/lnmp$': '<rootDir>/packages/lnmp/src',
-        '^@lnmp/wasm-bindings$': '<rootDir>/packages/wasm-bindings/src',
+
     },
 };

@@ -1,3 +1,4 @@
+
 import { parse_lnmp } from './wasm';
 import type { LnmpRecord } from './types';
 

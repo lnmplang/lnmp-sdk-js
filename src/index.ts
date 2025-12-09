@@ -1,6 +1,6 @@
+
 export { Parser } from './parser';
 export * from './types';
-export * from './parser';
 export * from './encoder';
 export * from './envelope';
 export * from './net';

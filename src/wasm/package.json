@@ -1,0 +1,27 @@
+{
+  "name": "lnmp",
+  "collaborators": [
+    "LNMP Team"
+  ],
+  "description": "LNMP (LLM Native Minimal Protocol) - Meta crate providing unified access to all LNMP modules",
+  "version": "0.5.13",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lnmplang/lnmp-protocol"
+  },
+  "files": [
+    "lnmp_bg.wasm",
+    "lnmp.js",
+    "lnmp.d.ts"
+  ],
+  "main": "lnmp.js",
+  "types": "lnmp.d.ts",
+  "keywords": [
+    "lnmp",
+    "protocol",
+    "llm",
+    "data-format",
+    "meta"
+  ]
+}

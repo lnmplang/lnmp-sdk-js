@@ -29,10 +29,13 @@ jobs:
         run: npm ci
 
       - name: Build WASM
-        run: npm run rebuild-wasm -w packages/wasm-bindings
+        run: npm run build:wasm
 
-      - name: Build All Packages
+      - name: Build Package
+        # Was previously build all packages, now just single build
         run: npm run build
 
       - name: Run tests
+        # We need to build before testing because of WASM dependency?, usually test runs ts-jest 
+        # jest is configured to use src, so it should be fine if wasm is built.
         run: npm test

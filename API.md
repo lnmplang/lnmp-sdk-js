@@ -1,6 +1,6 @@
 # LNMP SDK API Reference
 
-This document provides a detailed reference for the `@lnmplang/lnmp` TypeScript SDK.
+This document provides a detailed reference for the `@lnmp/lnmp` TypeScript SDK.
 
 ## Table of Contents
 
@@ -47,7 +47,7 @@ const text = encoder.encode(record);
 Fluent API for constructing `LnmpRecord`s.
 
 ```typescript
-import { RecordBuilder } from '@lnmplang/lnmp';
+import { RecordBuilder } from '@lnmp/lnmp';
 
 const record = new RecordBuilder()
     .addField({ fid: 12, value: { type: 'Int', value: 14532 } })
@@ -62,7 +62,7 @@ const record = new RecordBuilder()
 Wraps records with operational metadata (timestamp, source, trace ID).
 
 ```typescript
-import { Envelope } from '@lnmplang/lnmp';
+import { Envelope } from '@lnmp/lnmp';
 
 // Wrap a record
 const envelope = Envelope.wrap(record, {
@@ -86,7 +86,7 @@ const restoredMetadata = Envelope.fromHeaders(headers);
 AI-driven routing and importance scoring.
 
 ```typescript
-import { Network } from '@lnmplang/lnmp';
+import { Network } from '@lnmp/lnmp';
 
 const msg = {
     envelope: envelope,
@@ -110,7 +110,7 @@ const decision = Network.decide(msg);
 Vector operations, delta compression, and quantization.
 
 ```typescript
-import { Embedding, QuantScheme } from '@lnmplang/lnmp';
+import { Embedding, QuantScheme } from '@lnmp/lnmp';
 
 // Delta Compression
 const delta = Embedding.computeDelta(vec1, vec2);
@@ -129,7 +129,7 @@ const restored = Embedding.dequantize(quantized);
 Efficient encoding/decoding of spatial frames for hybrid reality.
 
 ```typescript
-import { Spatial, FrameMode } from '@lnmplang/lnmp';
+import { Spatial, FrameMode } from '@lnmp/lnmp';
 
 const frame = {
     header: {
@@ -152,7 +152,7 @@ const decoded = Spatial.decodeFrame(bytes);
 Cleans untrusted input to ensure safe parsing.
 
 ```typescript
-import { Sanitizer } from '@lnmplang/lnmp';
+import { Sanitizer } from '@lnmp/lnmp';
 
 const cleanText = Sanitizer.sanitize('  "Unsafe Input"  ');
 ```
@@ -164,7 +164,7 @@ const cleanText = Sanitizer.sanitize('  "Unsafe Input"  ');
 Generates human-readable explanations for LNMP records using a semantic dictionary.
 
 ```typescript
-import { ExplainEncoder } from '@lnmplang/lnmp';
+import { ExplainEncoder } from '@lnmp/lnmp';
 
 const dictionary = {
     12: "user_id",
@@ -184,7 +184,7 @@ const explanation = ExplainEncoder.encode(record, dictionary);
 Scores contexts (envelopes) to help LLMs prioritize data for RAG or prompt construction.
 
 ```typescript
-import { ContextScorer } from '@lnmplang/lnmp';
+import { ContextScorer } from '@lnmp/lnmp';
 
 const profile = ContextScorer.score(envelope);
 

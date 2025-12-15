@@ -28,7 +28,7 @@ npm install @lnmp/lnmp
 ### 1. Core & Codec (Parsing/Encoding)
 
 ```typescript
-import { Parser, Encoder, RecordBuilder } from '@lnmplang/lnmp';
+import { Parser, Encoder, RecordBuilder } from '@lnmp/lnmp';
 
 // Parse LNMP text
 const text = 'F12=14532;F7=1;F23=[admin,dev]';
@@ -54,7 +54,7 @@ console.log(output); // F7=1\nF12=14532
 Wrap records with operational metadata (timestamp, source, trace ID).
 
 ```typescript
-import { Envelope } from '@lnmplang/lnmp';
+import { Envelope } from '@lnmp/lnmp';
 
 const envelope = Envelope.wrap(record, {
     source: 'sensor-node-01',
@@ -72,7 +72,7 @@ const restoredMetadata = Envelope.fromHeaders(headers);
 Make intelligent routing decisions and calculate message importance.
 
 ```typescript
-import { Network } from '@lnmplang/lnmp';
+import { Network } from '@lnmp/lnmp';
 
 const msg = {
     envelope: envelope,
@@ -93,7 +93,7 @@ const decision = Network.decide(msg);
 Handle vector embeddings, delta updates, and quantization.
 
 ```typescript
-import { Embedding, QuantScheme } from '@lnmplang/lnmp';
+import { Embedding, QuantScheme } from '@lnmp/lnmp';
 
 const vec1 = [0.1, 0.2, 0.3];
 const vec2 = [0.2, 0.3, 0.4];
@@ -112,7 +112,7 @@ const restored = Embedding.dequantize(quantized);
 Encode and decode spatial frames for hybrid reality streams.
 
 ```typescript
-import { Spatial } from '@lnmplang/lnmp';
+import { Spatial } from '@lnmp/lnmp';
 
 const frame = {
     header: {
@@ -139,7 +139,7 @@ const decoded = Spatial.decodeFrame(bytes);
 Clean untrusted input before parsing.
 
 ```typescript
-import { Sanitizer } from '@lnmplang/lnmp';
+import { Sanitizer } from '@lnmp/lnmp';
 
 const dirty = '  "Hello"   ';
 const clean = Sanitizer.sanitize(dirty); // "Hello"
@@ -150,7 +150,7 @@ const clean = Sanitizer.sanitize(dirty); // "Hello"
 Generate human-readable explanations for LNMP records.
 
 ```typescript
-import { ExplainEncoder } from '@lnmplang/lnmp';
+import { ExplainEncoder } from '@lnmp/lnmp';
 
 const dict = { 12: "user_id", 7: "is_active" };
 const explanation = ExplainEncoder.encode(record, dict);
@@ -164,7 +164,7 @@ const explanation = ExplainEncoder.encode(record, dict);
 Score contexts for RAG and LLM prioritization.
 
 ```typescript
-import { ContextScorer } from '@lnmplang/lnmp';
+import { ContextScorer } from '@lnmp/lnmp';
 
 const profile = ContextScorer.score(envelope);
 console.log(profile.freshness_score); // 0.0 - 1.0
@@ -202,8 +202,7 @@ Benchmarks run on M-series Mac (Single Thread):
 ## Documentation
 
 - [**API Reference**](./API.md) - Detailed API guide for all modules.
-- [Core Package](../core/README.md)
-- [Codec Package](../codec/README.md)
+
 - [LNMP Protocol Specification](https://github.com/lnmplang/lnmp-protocol)
 
 

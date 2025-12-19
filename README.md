@@ -25,6 +25,25 @@ npm install @lnmp/lnmp
 
 ## Usage
 
+### 0. FID Registry (Field ID Constants)
+
+The SDK includes the official LNMP Field ID registry with 140+ standardized constants:
+
+```typescript
+import { FID, FID_NAMES } from '@lnmp/lnmp';
+
+// Use type-safe constants instead of magic numbers
+const userField = { fid: FID.USER_ID, value: 12345 };
+const timestampField = { fid: FID.TIMESTAMP, value: Date.now() };
+
+// Reverse lookup for debugging
+console.log(FID_NAMES[12]); // "user_id"
+
+// Available categories: Core, Spatial, Embeddings, Sensors, ML/LLM, etc.
+```
+
+**Benefits:** Type-safe field references, IDE autocomplete, consistent cross-platform.
+
 ### 1. Core & Codec (Parsing/Encoding)
 
 ```typescript
@@ -173,6 +192,7 @@ console.log(profile.risk_level);      // Low, Medium, High, Critical
 
 ## Features
 
+- ✅ **FID Registry**: 140+ official Field ID constants with type safety
 - ✅ **Core**: Full TypeScript support with strict typing
 - ✅ **Codec**: Parse/Encode LNMP text format (canonical)
 - ✅ **Envelope**: Metadata wrapping & HTTP header interop
@@ -208,9 +228,9 @@ Benchmarks run on M-series Mac (Single Thread):
 
 ## Version
 
-Current version: **0.1.0** (Phase 1 MVP)
+Current version: **0.5.5**
 
-Matches Rust implementation patterns from LNMP Protocol v0.5.12.
+Matches Rust implementation patterns from LNMP Protocol v0.5.16 with official FID registry.
 
 ## License
 

@@ -4,7 +4,7 @@
     "LNMP Team"
   ],
   "description": "LNMP (LLM Native Minimal Protocol) - Meta crate providing unified access to all LNMP modules",
-  "version": "0.5.13",
+  "version": "0.5.16",
   "license": "MIT",
   "repository": {
     "type": "git",

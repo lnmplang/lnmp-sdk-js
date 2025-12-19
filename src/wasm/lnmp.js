@@ -176,12 +176,6 @@ function getArrayU8FromWasm0(ptr, len) {
     return getUint8ArrayMemory0().subarray(ptr / 1, ptr / 1 + len);
 }
 
-function takeFromExternrefTable0(idx) {
-    const value = wasm.__wbindgen_externrefs.get(idx);
-    wasm.__externref_table_dealloc(idx);
-    return value;
-}
-
 let cachedFloat32ArrayMemory0 = null;
 
 function getFloat32ArrayMemory0() {
@@ -191,10 +185,148 @@ function getFloat32ArrayMemory0() {
     return cachedFloat32ArrayMemory0;
 }
 
+function passArrayF32ToWasm0(arg, malloc) {
+    const ptr = malloc(arg.length * 4, 4) >>> 0;
+    getFloat32ArrayMemory0().set(arg, ptr / 4);
+    WASM_VECTOR_LEN = arg.length;
+    return ptr;
+}
+
+function takeFromExternrefTable0(idx) {
+    const value = wasm.__wbindgen_externrefs.get(idx);
+    wasm.__externref_table_dealloc(idx);
+    return value;
+}
+/**
+ * @param {Float32Array} vector
+ * @param {number} scheme_id
+ * @returns {any}
+ */
+exports.quantize_embedding = function(vector, scheme_id) {
+    const ptr0 = passArrayF32ToWasm0(vector, wasm.__wbindgen_malloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.quantize_embedding(ptr0, len0, scheme_id);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+};
+
+/**
+ * @param {Float32Array} base
+ * @param {Float32Array} updated
+ * @returns {any}
+ */
+exports.embedding_delta = function(base, updated) {
+    const ptr0 = passArrayF32ToWasm0(base, wasm.__wbindgen_malloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passArrayF32ToWasm0(updated, wasm.__wbindgen_malloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ret = wasm.embedding_delta(ptr0, len0, ptr1, len1);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+};
+
+/**
+ * @param {any} record_js
+ * @param {boolean} canonical
+ * @param {boolean} type_hints
+ * @returns {string}
+ */
+exports.encode_lnmp = function(record_js, canonical, type_hints) {
+    let deferred2_0;
+    let deferred2_1;
+    try {
+        const ret = wasm.encode_lnmp(record_js, canonical, type_hints);
+        var ptr1 = ret[0];
+        var len1 = ret[1];
+        if (ret[3]) {
+            ptr1 = 0; len1 = 0;
+            throw takeFromExternrefTable0(ret[2]);
+        }
+        deferred2_0 = ptr1;
+        deferred2_1 = len1;
+        return getStringFromWasm0(ptr1, len1);
+    } finally {
+        wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
+    }
+};
+
 function getArrayF32FromWasm0(ptr, len) {
     ptr = ptr >>> 0;
     return getFloat32ArrayMemory0().subarray(ptr / 4, ptr / 4 + len);
 }
+/**
+ * @param {Float32Array} base
+ * @param {any} delta_js
+ * @returns {Float32Array}
+ */
+exports.embedding_apply_delta = function(base, delta_js) {
+    const ptr0 = passArrayF32ToWasm0(base, wasm.__wbindgen_malloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.embedding_apply_delta(ptr0, len0, delta_js);
+    if (ret[3]) {
+        throw takeFromExternrefTable0(ret[2]);
+    }
+    var v2 = getArrayF32FromWasm0(ret[0], ret[1]).slice();
+    wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
+    return v2;
+};
+
+function passArray8ToWasm0(arg, malloc) {
+    const ptr = malloc(arg.length * 1, 1) >>> 0;
+    getUint8ArrayMemory0().set(arg, ptr / 1);
+    WASM_VECTOR_LEN = arg.length;
+    return ptr;
+}
+/**
+ * @param {Uint8Array} bytes
+ * @returns {any}
+ */
+exports.spatial_decode_frame = function(bytes) {
+    const ptr0 = passArray8ToWasm0(bytes, wasm.__wbindgen_malloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.spatial_decode_frame(ptr0, len0);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+};
+
+/**
+ * @param {any} record_js
+ * @param {any} metadata_js
+ * @returns {any}
+ */
+exports.envelope_wrap = function(record_js, metadata_js) {
+    const ret = wasm.envelope_wrap(record_js, metadata_js);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+};
+
+/**
+ * @param {string} text
+ * @returns {string}
+ */
+exports.sanitize_text = function(text) {
+    let deferred2_0;
+    let deferred2_1;
+    try {
+        const ptr0 = passStringToWasm0(text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len0 = WASM_VECTOR_LEN;
+        const ret = wasm.sanitize_text(ptr0, len0);
+        deferred2_0 = ret[0];
+        deferred2_1 = ret[1];
+        return getStringFromWasm0(ret[0], ret[1]);
+    } finally {
+        wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
+    }
+};
+
 /**
  * @param {any} quantized_js
  * @returns {Float32Array}
@@ -234,172 +366,19 @@ exports.network_decide = function(message_js, now_ms) {
 };
 
 /**
- * @param {string} hex
+ * @param {number} fid
+ * @param {string | null | undefined} type_hint
+ * @param {any} value_js
  * @returns {number}
  */
-exports.parse_checksum = function(hex) {
-    const ptr0 = passStringToWasm0(hex, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-    const len0 = WASM_VECTOR_LEN;
-    const ret = wasm.parse_checksum(ptr0, len0);
+exports.compute_checksum = function(fid, type_hint, value_js) {
+    var ptr0 = isLikeNone(type_hint) ? 0 : passStringToWasm0(type_hint, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    var len0 = WASM_VECTOR_LEN;
+    const ret = wasm.compute_checksum(fid, ptr0, len0, value_js);
     if (ret[2]) {
         throw takeFromExternrefTable0(ret[1]);
     }
     return ret[0] >>> 0;
-};
-
-/**
- * @param {any} frame_js
- * @returns {Uint8Array}
- */
-exports.spatial_encode_frame = function(frame_js) {
-    const ret = wasm.spatial_encode_frame(frame_js);
-    if (ret[3]) {
-        throw takeFromExternrefTable0(ret[2]);
-    }
-    var v1 = getArrayU8FromWasm0(ret[0], ret[1]).slice();
-    wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
-    return v1;
-};
-
-exports.init = function() {
-    wasm.init();
-};
-
-function passArrayF32ToWasm0(arg, malloc) {
-    const ptr = malloc(arg.length * 4, 4) >>> 0;
-    getFloat32ArrayMemory0().set(arg, ptr / 4);
-    WASM_VECTOR_LEN = arg.length;
-    return ptr;
-}
-/**
- * @param {Float32Array} base
- * @param {Float32Array} updated
- * @returns {any}
- */
-exports.embedding_delta = function(base, updated) {
-    const ptr0 = passArrayF32ToWasm0(base, wasm.__wbindgen_malloc);
-    const len0 = WASM_VECTOR_LEN;
-    const ptr1 = passArrayF32ToWasm0(updated, wasm.__wbindgen_malloc);
-    const len1 = WASM_VECTOR_LEN;
-    const ret = wasm.embedding_delta(ptr0, len0, ptr1, len1);
-    if (ret[2]) {
-        throw takeFromExternrefTable0(ret[1]);
-    }
-    return takeFromExternrefTable0(ret[0]);
-};
-
-/**
- * @param {any} envelope_js
- * @returns {any}
- */
-exports.envelope_unwrap = function(envelope_js) {
-    const ret = wasm.envelope_unwrap(envelope_js);
-    if (ret[2]) {
-        throw takeFromExternrefTable0(ret[1]);
-    }
-    return takeFromExternrefTable0(ret[0]);
-};
-
-/**
- * @param {any} record_js
- * @param {boolean} canonical
- * @param {boolean} type_hints
- * @returns {string}
- */
-exports.encode_lnmp = function(record_js, canonical, type_hints) {
-    let deferred2_0;
-    let deferred2_1;
-    try {
-        const ret = wasm.encode_lnmp(record_js, canonical, type_hints);
-        var ptr1 = ret[0];
-        var len1 = ret[1];
-        if (ret[3]) {
-            ptr1 = 0; len1 = 0;
-            throw takeFromExternrefTable0(ret[2]);
-        }
-        deferred2_0 = ptr1;
-        deferred2_1 = len1;
-        return getStringFromWasm0(ptr1, len1);
-    } finally {
-        wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
-    }
-};
-
-/**
- * @param {Float32Array} vector
- * @param {number} scheme_id
- * @returns {any}
- */
-exports.quantize_embedding = function(vector, scheme_id) {
-    const ptr0 = passArrayF32ToWasm0(vector, wasm.__wbindgen_malloc);
-    const len0 = WASM_VECTOR_LEN;
-    const ret = wasm.quantize_embedding(ptr0, len0, scheme_id);
-    if (ret[2]) {
-        throw takeFromExternrefTable0(ret[1]);
-    }
-    return takeFromExternrefTable0(ret[0]);
-};
-
-/**
- * @param {any} envelope_js
- * @returns {any}
- */
-exports.transport_to_http = function(envelope_js) {
-    const ret = wasm.transport_to_http(envelope_js);
-    if (ret[2]) {
-        throw takeFromExternrefTable0(ret[1]);
-    }
-    return takeFromExternrefTable0(ret[0]);
-};
-
-/**
- * @param {string} text
- * @returns {string}
- */
-exports.sanitize_text = function(text) {
-    let deferred2_0;
-    let deferred2_1;
-    try {
-        const ptr0 = passStringToWasm0(text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-        const len0 = WASM_VECTOR_LEN;
-        const ret = wasm.sanitize_text(ptr0, len0);
-        deferred2_0 = ret[0];
-        deferred2_1 = ret[1];
-        return getStringFromWasm0(ret[0], ret[1]);
-    } finally {
-        wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
-    }
-};
-
-/**
- * @param {number} checksum
- * @returns {string}
- */
-exports.format_checksum = function(checksum) {
-    let deferred1_0;
-    let deferred1_1;
-    try {
-        const ret = wasm.format_checksum(checksum);
-        deferred1_0 = ret[0];
-        deferred1_1 = ret[1];
-        return getStringFromWasm0(ret[0], ret[1]);
-    } finally {
-        wasm.__wbindgen_free(deferred1_0, deferred1_1, 1);
-    }
-};
-
-/**
- * @param {string} text
- * @returns {any}
- */
-exports.parse_lnmp = function(text) {
-    const ptr0 = passStringToWasm0(text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-    const len0 = WASM_VECTOR_LEN;
-    const ret = wasm.parse_lnmp(ptr0, len0);
-    if (ret[2]) {
-        throw takeFromExternrefTable0(ret[1]);
-    }
-    return takeFromExternrefTable0(ret[0]);
 };
 
 /**
@@ -419,15 +398,30 @@ exports.lnmp_version = function() {
 };
 
 /**
- * @param {any} headers_js
- * @returns {any}
+ * @param {any} message_js
+ * @param {number} now_ms
+ * @returns {number}
  */
-exports.transport_from_http = function(headers_js) {
-    const ret = wasm.transport_from_http(headers_js);
+exports.network_importance = function(message_js, now_ms) {
+    const ret = wasm.network_importance(message_js, now_ms);
     if (ret[2]) {
         throw takeFromExternrefTable0(ret[1]);
     }
-    return takeFromExternrefTable0(ret[0]);
+    return ret[0];
+};
+
+/**
+ * @param {any} frame_js
+ * @returns {Uint8Array}
+ */
+exports.spatial_encode_frame = function(frame_js) {
+    const ret = wasm.spatial_encode_frame(frame_js);
+    if (ret[3]) {
+        throw takeFromExternrefTable0(ret[2]);
+    }
+    var v1 = getArrayU8FromWasm0(ret[0], ret[1]).slice();
+    wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
+    return v1;
 };
 
 /**
@@ -455,61 +449,43 @@ exports.llb_explain = function(record_js, dictionary_js) {
 };
 
 /**
- * @param {any} message_js
- * @param {number} now_ms
+ * @param {string} hex
  * @returns {number}
  */
-exports.network_importance = function(message_js, now_ms) {
-    const ret = wasm.network_importance(message_js, now_ms);
-    if (ret[2]) {
-        throw takeFromExternrefTable0(ret[1]);
-    }
-    return ret[0];
-};
-
-/**
- * @param {number} fid
- * @param {string | null | undefined} type_hint
- * @param {any} value_js
- * @returns {number}
- */
-exports.compute_checksum = function(fid, type_hint, value_js) {
-    var ptr0 = isLikeNone(type_hint) ? 0 : passStringToWasm0(type_hint, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-    var len0 = WASM_VECTOR_LEN;
-    const ret = wasm.compute_checksum(fid, ptr0, len0, value_js);
+exports.parse_checksum = function(hex) {
+    const ptr0 = passStringToWasm0(hex, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.parse_checksum(ptr0, len0);
     if (ret[2]) {
         throw takeFromExternrefTable0(ret[1]);
     }
     return ret[0] >>> 0;
 };
 
-function passArray8ToWasm0(arg, malloc) {
-    const ptr = malloc(arg.length * 1, 1) >>> 0;
-    getUint8ArrayMemory0().set(arg, ptr / 1);
-    WASM_VECTOR_LEN = arg.length;
-    return ptr;
-}
 /**
- * @param {Uint8Array} bytes
+ * @param {string} text
  * @returns {any}
  */
-exports.spatial_decode_frame = function(bytes) {
-    const ptr0 = passArray8ToWasm0(bytes, wasm.__wbindgen_malloc);
+exports.parse_lnmp = function(text) {
+    const ptr0 = passStringToWasm0(text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     const len0 = WASM_VECTOR_LEN;
-    const ret = wasm.spatial_decode_frame(ptr0, len0);
+    const ret = wasm.parse_lnmp(ptr0, len0);
     if (ret[2]) {
         throw takeFromExternrefTable0(ret[1]);
     }
     return takeFromExternrefTable0(ret[0]);
 };
 
+exports.init = function() {
+    wasm.init();
+};
+
 /**
- * @param {any} record_js
- * @param {any} metadata_js
+ * @param {any} envelope_js
  * @returns {any}
  */
-exports.envelope_wrap = function(record_js, metadata_js) {
-    const ret = wasm.envelope_wrap(record_js, metadata_js);
+exports.transport_to_http = function(envelope_js) {
+    const ret = wasm.transport_to_http(envelope_js);
     if (ret[2]) {
         throw takeFromExternrefTable0(ret[1]);
     }
@@ -530,20 +506,44 @@ exports.sfe_score_context = function(envelope_js, now) {
 };
 
 /**
- * @param {Float32Array} base
- * @param {any} delta_js
- * @returns {Float32Array}
+ * @param {number} checksum
+ * @returns {string}
  */
-exports.embedding_apply_delta = function(base, delta_js) {
-    const ptr0 = passArrayF32ToWasm0(base, wasm.__wbindgen_malloc);
-    const len0 = WASM_VECTOR_LEN;
-    const ret = wasm.embedding_apply_delta(ptr0, len0, delta_js);
-    if (ret[3]) {
-        throw takeFromExternrefTable0(ret[2]);
+exports.format_checksum = function(checksum) {
+    let deferred1_0;
+    let deferred1_1;
+    try {
+        const ret = wasm.format_checksum(checksum);
+        deferred1_0 = ret[0];
+        deferred1_1 = ret[1];
+        return getStringFromWasm0(ret[0], ret[1]);
+    } finally {
+        wasm.__wbindgen_free(deferred1_0, deferred1_1, 1);
     }
-    var v2 = getArrayF32FromWasm0(ret[0], ret[1]).slice();
-    wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
-    return v2;
+};
+
+/**
+ * @param {any} envelope_js
+ * @returns {any}
+ */
+exports.envelope_unwrap = function(envelope_js) {
+    const ret = wasm.envelope_unwrap(envelope_js);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
+};
+
+/**
+ * @param {any} headers_js
+ * @returns {any}
+ */
+exports.transport_from_http = function(headers_js) {
+    const ret = wasm.transport_from_http(headers_js);
+    if (ret[2]) {
+        throw takeFromExternrefTable0(ret[1]);
+    }
+    return takeFromExternrefTable0(ret[0]);
 };
 
 exports.__wbg_Error_e83987f665cf5504 = function(arg0, arg1) {

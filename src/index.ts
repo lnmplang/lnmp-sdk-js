@@ -9,6 +9,7 @@ export * from './spatial';
 export * from './sanitize';
 export * from './llb';
 export * from './sfe';
+export * from './registry';
 
 // Re-export specific WASM functions that don't need wrappers
 export {
